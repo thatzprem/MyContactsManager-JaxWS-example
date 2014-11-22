@@ -13,7 +13,7 @@ public class Contact {
 	  @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	  private Long id;
 	@Persistent
-	public String firstname;
+	private String firstname;
 	public String getFirstname() {
 		return firstname;
 	}

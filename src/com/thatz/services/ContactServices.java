@@ -33,7 +33,7 @@ public class ContactServices {
 		return resp;
 	}
 	
-	@ApiMethod(name="deleteContact", path = "deleteContact", httpMethod = "POST")
+	@ApiMethod(name="deleteContact", path = "deleteContact", httpMethod = "GET")
 	   public ApiResponse deleteContact(@Named("id") Long id){
         
         PersistenceManager pm = getPersistenceManager();
@@ -46,12 +46,12 @@ public class ContactServices {
         return resp;
    }
 	
-	@ApiMethod(name="updateContact", path = "updateContact", httpMethod = "POST")
-	public void updateEmployeeTitle(Contact contact, @Named("firstname") String newTitle) {
+	@ApiMethod(name="updateContact", path = "updateContact", httpMethod = "GET")
+	public void updateEmployeeTitle(@Named("id") Long id,@Named("firstname") String firstname) {
 	    PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
-	    	Contact e = pm.getObjectById(Contact.class,contact.getId());
-	            e.firstname = newTitle;
+	    	Contact e = pm.getObjectById(Contact.class,id);
+	            e.setFirstname(firstname);
 	    } finally {
 	        pm.close();
 	    }
